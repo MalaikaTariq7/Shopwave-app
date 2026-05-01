@@ -1,19 +1,16 @@
 pipeline {
     agent any
-
     stages {
         stage('Clone') {
             steps {
                 git url: 'https://github.com/MalaikaTariq7/Shopwave-app.git', branch: 'main'
             }
         }
-
         stage('Build Docker Image') {
             steps {
                 sh 'docker build -t shopwave-test .'
             }
         }
-
         stage('Test') {
             steps {
                 sh '''
@@ -34,10 +31,10 @@ pipeline {
             }
         }
     }
-
     post {
         always {
             emailext(
+                to: 'malaikatariq2400@gmail.com',
                 subject: "ShopWave Test Results: ${currentBuild.currentResult} - Build #${env.BUILD_NUMBER}",
                 body: """
                     <h2>Test Results: ${currentBuild.currentResult}</h2>
