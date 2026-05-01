@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Register</title>
+  <link rel="stylesheet" href="/static/css/style.css" />
+</head>
+<body class="page-shell">
+  <header class="header">
+    <div class="brand">ShopWave</div>
+    <nav class="nav-links">
+      <a href="/" id="home-link">Home</a>
+      <a href="/products" id="products-link">Products</a>
+      <a href="/register" id="register-link">Register</a>
+      <a href="/login" id="login-link">Login</a>
+    </nav>
+  </header>
+  <div class="container">
+    <h1>Register</h1>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+      <div id="register-messages" class="messages">
+        {% for category, message in messages %}
+          <div class="message {{ category }}">{{ message }}</div>
+        {% endfor %}
+      </div>
+    {% endif %}
+    {% endwith %}
+    <form id="register-form" action="/register" method="post">
+      <label for="name-input">Name</label>
+      <input id="name-input" type="text" name="name" value="{{ name|default('') }}" placeholder="Enter your name" />
+
+      <label for="email-input">Email</label>
+      <input id="email-input" type="email" name="email" value="{{ email|default('') }}" placeholder="Enter your email" />
+
+      <label for="password-input">Password</label>
+      <input id="password-input" type="password" name="password" placeholder="Enter your password" />
+
+      <button id="register-btn" class="button" type="submit">Register</button>
+    </form>
+    <div class="small-text">
+      Already have an account? <a id="login-link" href="/login">Login here</a>
+    </div>
+  </div>
+  <footer class="footer" id="footer">
+    <p>ShopWave demo app — register and start exploring.</p>
+  </footer>
+</body>
+</html>

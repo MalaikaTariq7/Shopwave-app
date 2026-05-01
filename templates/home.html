@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>User Management - Home</title>
+  <link rel="stylesheet" href="/static/css/style.css" />
+</head>
+<body class="page-shell">
+  <header class="site-header">
+    <div class="brand">ShopWave</div>
+    <nav class="site-nav">
+      <a href="/" id="home-link">Home</a>
+      <a href="/products" id="products-link">Products</a>
+      <a href="/register" id="register-link">Register</a>
+      <a href="/login" id="login-link">Login</a>
+    </nav>
+  </header>
+
+  <main class="hero-section">
+    <div class="hero-mask"></div>
+    <div class="hero-inner">
+      <p class="eyebrow">A modern user dashboard for simple web demos</p>
+      <h1>Beautiful user management with stylish products.</h1>
+      <p class="hero-copy">Register, login, manage your items, and browse a catalog of 20+ product examples in one elegant interface.</p>
+      <div class="hero-actions">
+        <a id="hero-register-btn" class="button main-btn" href="/register">Get started</a>
+        <a id="hero-products-btn" class="button secondary-btn" href="/products">Browse products</a>
+      </div>
+    </div>
+  </main>
+
+  <section class="container cards-section">
+    <div class="section-title">Featured products</div>
+    <div class="cards">
+      <article id="product-1" class="card">
+        <div class="product-icon">📘</div>
+        <h2 class="card-title">Blue Notebook</h2>
+        <p class="card-text">A simple productivity notebook for your tasks and notes.</p>
+        <div class="card-price">$9.99</div>
+      </article>
+      <article id="product-2" class="card">
+        <div class="product-icon">⌚</div>
+        <h2 class="card-title">Smart Watch</h2>
+        <p class="card-text">Stay on time with a clean, lightweight smartwatch design.</p>
+        <div class="card-price">$49.99</div>
+      </article>
+      <article id="product-3" class="card">
+        <div class="product-icon">🖊️</div>
+        <h2 class="card-title">Daily Planner</h2>
+        <p class="card-text">Organize your day, your tasks, and your goals in one planner.</p>
+        <div class="card-price">$14.99</div>
+      </article>
+    </div>
+    <div class="button-row center-row">
+      <a id="view-products-link" class="button main-btn" href="/products">Browse all products</a>
+    </div>
+  </section>
+
+  <footer class="footer" id="footer">
+    <p>ShopWave demo app — polished styling for your learning flow.</p>
+  </footer>
+</body>
+</html>

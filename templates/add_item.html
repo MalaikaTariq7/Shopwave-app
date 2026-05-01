@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Add Item</title>
+  <link rel="stylesheet" href="/static/css/style.css" />
+</head>
+<body class="page-shell">
+  <header class="header">
+    <div class="brand">ShopWave</div>
+    <nav class="nav-links">
+      <a href="/" id="home-link">Home</a>
+      <a href="/products" id="products-link">Products</a>
+      <a href="/register" id="register-link">Register</a>
+      <a href="/login" id="login-link">Login</a>
+      <a id="logout-link" href="/logout">Logout</a>
+    </nav>
+  </header>
+  <div class="container">
+    <h1>Add Item</h1>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+      <div id="add-item-messages" class="messages">
+        {% for category, message in messages %}
+          <div class="message {{ category }}">{{ message }}</div>
+        {% endfor %}
+      </div>
+    {% endif %}
+    {% endwith %}
+    <form id="add-item-form" action="/add-item" method="post">
+      <label for="title-input">Title</label>
+      <input id="title-input" type="text" name="title" placeholder="Enter item title" />
+      <button id="add-item-btn" class="button" type="submit">Add Item</button>
+    </form>
+    <div class="small-text">
+      <a id="items-link" href="/items">View my items</a>
+    </div>
+  </div>
+  <footer class="footer" id="footer">
+    <p>ShopWave item page — add your next task or note.</p>
+  </footer>
+</body>
+</html>

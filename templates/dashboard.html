@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard</title>
+  <link rel="stylesheet" href="/static/css/style.css" />
+</head>
+<body class="page-shell">
+  <header class="header">
+    <div class="brand">ShopWave</div>
+    <nav class="nav-links">
+      <a href="/" id="home-link">Home</a>
+      <a href="/products" id="products-link">Products</a>
+      <a href="/register" id="register-link">Register</a>
+      <a href="/login" id="login-link">Login</a>
+      <a id="logout-link" href="/logout">Logout</a>
+    </nav>
+  </header>
+  <div class="container">
+    <h1>Dashboard</h1>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+      <div id="dashboard-messages" class="messages">
+        {% for category, message in messages %}
+          <div class="message {{ category }}">{{ message }}</div>
+        {% endfor %}
+      </div>
+    {% endif %}
+    {% endwith %}
+    <p>Hello, <strong id="user-name">{{ name }}</strong>!</p>
+    <p class="small-text">You have added <strong id="item-count">{{ item_count }}</strong> item(s).</p>
+    <div class="button-row">
+      <a id="add-item-link" class="button" href="/add-item">Add Item</a>
+      <a id="view-items-link" class="button button-alt" href="/items">View Items</a>
+      <a id="logout-btn" class="button button-danger" href="/logout">Logout</a>
+    </div>
+  </div>
+  <footer class="footer" id="footer">
+    <p>ShopWave dashboard — track your items and products.</p>
+  </footer>
+</body>
+</html>

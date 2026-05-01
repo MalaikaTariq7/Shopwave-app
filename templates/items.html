@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Items</title>
+  <link rel="stylesheet" href="/static/css/style.css" />
+</head>
+<body class="page-shell">
+  <header class="header">
+    <div class="brand">ShopWave</div>
+    <nav class="nav-links">
+      <a href="/" id="home-link">Home</a>
+      <a href="/products" id="products-link">Products</a>
+      <a href="/register" id="register-link">Register</a>
+      <a href="/login" id="login-link">Login</a>
+      <a id="logout-link" href="/logout">Logout</a>
+  </header>
+  <div class="container">
+    <h1>My Items</h1>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+      <div id="items-messages" class="messages">
+        {% for category, message in messages %}
+          <div class="message {{ category }}">{{ message }}</div>
+        {% endfor %}
+      </div>
+    {% endif %}
+    {% endwith %}
+    {% if items|length == 0 %}
+      <p id="no-items">No items yet. Add your first item.</p>
+    {% else %}
+      <ul id="item-list" class="item-list">
+        {% for item in items %}
+          <li class="item-row">
+            <span class="item-title">{{ item['title'] }}</span>
+            <form id="delete-form-{{ item['id'] }}" class="inline-form" action="/delete-item/{{ item['id'] }}" method="post">
+              <button id="delete-btn-{{ item['id'] }}" class="button button-danger" type="submit">Delete</button>
+            </form>
+          </li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+    <div class="button-row">
+      <a id="add-item-link" class="button" href="/add-item">Add New Item</a>
+      <a id="dashboard-link" class="button button-alt" href="/dashboard">Back to Dashboard</a>
+    </div>
+  </div>
+  <footer class="footer" id="footer">
+    <p>ShopWave items page — manage your tasks easily.</p>
+  </footer>
+</body>
+</html>

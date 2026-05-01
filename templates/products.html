@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Products</title>
+  <link rel="stylesheet" href="/static/css/style.css" />
+</head>
+<body class="page-shell">
+  <header class="header">
+    <div class="brand">ShopWave</div>
+    <nav class="nav-links">
+      <a id="home-link" href="/">Home</a>
+      <a id="products-link" href="/products">Products</a>
+      <a id="register-link" href="/register">Register</a>
+      <a id="login-link" href="/login">Login</a>
+    </nav>
+  </header>
+
+  <div class="container">
+    <h1>Products</h1>
+    <p>Browse a small catalog of featured products for your demo site.</p>
+    <div class="cards">
+      {% for product in products %}
+        <article id="product-{{ product.id }}" class="card card-product">
+          <div class="product-icon">{{ product.icon }}</div>
+          <h2 class="card-title">{{ product.name }}</h2>
+          <p class="card-text">{{ product.description }}</p>
+          <div class="card-price">{{ product.price }}</div>
+          <button id="buy-btn-{{ product.id }}" class="button button-alt" type="button">Buy now</button>
+        </article>
+      {% endfor %}
+    </div>
+  </div>
+
+  <footer class="footer" id="footer">
+    <p>ShopWave product catalog — built for easy user flows.</p>
+  </footer>
+</body>
+</html>

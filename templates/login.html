@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login</title>
+  <link rel="stylesheet" href="/static/css/style.css" />
+</head>
+<body class="page-shell">
+  <header class="header">
+    <div class="brand">ShopWave</div>
+    <nav class="nav-links">
+      <a href="/" id="home-link">Home</a>
+      <a href="/products" id="products-link">Products</a>
+      <a href="/register" id="register-link">Register</a>
+      <a href="/login" id="login-link">Login</a>
+    </nav>
+  </header>
+  <div class="container">
+    <h1>Login</h1>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+      <div id="login-messages" class="messages">
+        {% for category, message in messages %}
+          <div class="message {{ category }}">{{ message }}</div>
+        {% endfor %}
+      </div>
+    {% endif %}
+    {% endwith %}
+    <form id="login-form" action="/login" method="post">
+      <label for="email-input">Email</label>
+      <input id="email-input" type="email" name="email" value="{{ email|default('') }}" placeholder="Enter your email" />
+
+      <label for="password-input">Password</label>
+      <input id="password-input" type="password" name="password" placeholder="Enter your password" />
+
+      <button id="login-btn" class="button" type="submit">Login</button>
+    </form>
+    <div class="small-text">
+      New user? <a id="register-link" href="/register">Register here</a>
+    </div>
+  </div>
+  <footer class="footer" id="footer">
+    <p>ShopWave demo app — login to continue.</p>
+  </footer>
+</body>
+</html>
