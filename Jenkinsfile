@@ -30,6 +30,19 @@ pipeline {
                 '''
             }
         }
+        stage('Deploy') {
+            steps {
+                sh '''
+                    docker stop shopwave-app || true
+                    docker rm shopwave-app || true
+                    docker run -d \
+                        --name shopwave-app \
+                        -p 5000:5000 \
+                        shopwave-test \
+                        flask run --host=0.0.0.0 --port=5000
+                '''
+            }
+        }
     }
     post {
         always {
@@ -40,6 +53,7 @@ pipeline {
                     <h2>Test Results: ${currentBuild.currentResult}</h2>
                     <p><b>Job:</b> ${env.JOB_NAME}</p>
                     <p><b>Build:</b> #${env.BUILD_NUMBER}</p>
+                    <p><b>App URL:</b> <a href="http://16.16.233.7:5000">http://16.16.233.7:5000</a></p>
                     <p><b>Console:</b> <a href="${env.BUILD_URL}console">View Console Output</a></p>
                 """,
                 mimeType: 'text/html',
